@@ -39,7 +39,9 @@ myOtherShirt["type"] = "spandex"
 // The key should be the animal name(string) and the value should be how many there are.
 // Our zoo has 8 monkeys, 4 giraffes and 2 elephants
 var zoo = {
-
+		'monkeys': 8,
+		'giraffes': 4,
+		'elephants': 2
 }
 
 // #6 Loop through this object and change all keys that start with the letter s to have a value of 's'
@@ -82,25 +84,51 @@ var thirdHero = heroes[1];
 // #9 Write a function called addItem that takes in an array and an item, adds the item to
 // the array, and returns the array with the added item.
 function addItem(arr, item) {
-
+			arr.push(item)
+	return arr;
 }
 
 // #10 Write a function called removeItem that takes in an array of strings, and a string.
-
 // Removes all instances of that string from the array. And return the modified array.
 // The order of the array should not be changed
+function removeItem(arr, str) {
+  return arr.filter(function(instance){
+		return instance !== str
+	})
 
+}
 // #11 Write a function  called doubleTheFun that takes 1 parameter. It should double numbers, and
 // repeats strings. example 4->8, 2.5->5, 'Awesome'->'AwesomeAwesome'
-function doubleTheFun(param) {
+// function doubleTheFun(param) {
+//   	if (typeof param === 'number'){
+//   return param * 2;
+//   }
+// 	else if ( param.parseInt === parseInt){
+// 		return param + param
+// 	}
+//
+//   else {
+//     return param + param
+//    }
+//
+// }
 
+function doubleTheFun(param) {
+	if(!isNaN(param * 2)){
+		return param * 2;
+	}
+	else {
+		return param + param
+	}
 }
 
 
 // #12 Write function getValueOfProperty that takes in an object, and the name of a property on the object
 // return the value from the object that corresponds to the property
-function getValueOfProperty() {
-
+function getValueOfProperty(obj, prop) {
+		for(var x in obj) {
+			return obj[prop];
+		}
 }
 
 // #13 Write a function called makeChatMessage that takes in a message and author as parameters
@@ -109,27 +137,31 @@ function getValueOfProperty() {
 
 function makeChatMessage(message, author){
 
-  var timeStamp = new Date()
-  var utcDate = timeStamp.toUTCString()
-
-	return {message: message,
+  var obj = {
+					message: message,
 		   		author: author,
-					time: utcDate
+					timestamp: new Date()
 				}
+			return obj;
 		}
 
 
 
 // #14 Create a function called coderTest that takes in an object that is a person. It looks to see if the person’s name is Jeremy and then changes the person object to have a property called lovesCode with a value of 10.  If their name is Brack set lovesCode to 0.  otherwise set lovesCode to 5.
-
-function coderTest(dude) {
-var person = {
-	Name: "Jeremy",
-}
-
 // if (person.name === "Jeremy") {
 //
 // }
+
+function coderTest(obj) {
+		if(obj.name === "Jeremy") {
+			obj.lovesCode = 10;
+		}
+		else if(obj.name === "Brack"){
+			obj.lovesCode = 0;
+		}
+		else {
+			return obj.lovesCode = 5
+		}
 
 	}
 
@@ -166,3 +198,8 @@ function outside(temperature, humidity, cloudiness) {
 
 
 // example - If I call you with 'Give it' you should invoke holla with 'Give it back'
+
+
+function callerBack(holla, str) {
+	holla(str + " back")
+}
